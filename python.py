@@ -65,8 +65,36 @@ class food:
 
 #Functions
 def create_food(): 
+    occupied = {tuple(c) for c in snake.coordinates} 
+    free_cells = [ 
+        (cold * SPACE_SIZE, ROW * SPACE_SIZE) for COL in range(COLS) for ROW in range(ROWS) if (COL * SPACE_SIZE, ROW * SPACE_SIZE) not in occupied 
+    ]
+        if not free_cells:
+            return None
+    x, y = random.choice(free_cells)
+    return food(x, y)
 
-def next_turn():
+
+    
+
+def next_turn(snake, food):
+    global direction, score,
+
+#Apply the requested direction once per tick 
+direction = next_direction
+ x, y = snake.coordinates[0]
+if direction == "Up":
+    y -= SPACE_SIZE
+elif direction == "Down":
+    y += SPACE_SIZE
+elif direction == "Left":
+    x -= SPACE_SIZE
+elif direction == "Right":
+    x += SPACE_SIZE     
+
+snake.coordinates.insert(0, (x, y))
+
+
 
 def change_directions():
 
